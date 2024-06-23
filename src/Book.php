@@ -20,23 +20,12 @@ class Book
     /** @ORM\Column(type="string") */
     private $Author;
 
-    /** @ORM\Column(type="string", nullable=true) */
-    private $Genre;
-
     /** @ORM\Column(type="integer", nullable=true) */
     private $PublicationYear;
 
-    /** @ORM\Column(type="string", unique=true) */
-    private $ISBN;
-
-    /** @ORM\Column(type="integer", nullable=true) */
-    private $Pages;
-
     /** @ORM\Column(type="string", nullable=true) */
-    private $Publisher;
+    private $availability;
 
-    /** @ORM\Column(type="text", nullable=true) */
-    private $Description;
 
     // Getters and setters...
     // Getter for BookID
@@ -69,18 +58,6 @@ class Book
         $this->Author = $author;
     }
 
-    // Getter for Genre
-    public function getGenre()
-    {
-        return $this->Genre;
-    }
-
-    // Setter for Genre
-    public function setGenre($genre)
-    {
-        $this->Genre = $genre;
-    }
-
     // Getter for PublicationYear
     public function getPublicationYear()
     {
@@ -93,52 +70,27 @@ class Book
         $this->PublicationYear = $year;
     }
 
-    // Getter for ISBN
-    public function getISBN()
-    {
-        return $this->ISBN;
-    }
-
-    // Setter for ISBN
-    public function setISBN($isbn)
-    {
-        $this->ISBN = $isbn;
-    }
-
-    // Getter for Pages
-    public function getPages()
-    {
-        return $this->Pages;
-    }
-
-    // Setter for Pages
-    public function setPages($pages)
-    {
-        $this->Pages = $pages;
-    }
-
     // Getter for Publisher
-    public function getPublisher()
+    public function getAvailability()
     {
-        return $this->Publisher;
+        return $this->availability;
     }
 
     // Setter for Publisher
-    public function setPublisher($publisher)
+    public function setAvailability($availability)
     {
-        $this->Publisher = $publisher;
+        $this->availability = $availability;
     }
 
-    // Getter for Description
-    public function getDescription()
+     public function toArray()
     {
-        return $this->Description;
-    }
-
-    // Setter for Description
-    public function setDescription($description)
-    {
-        $this->Description = $description;
+        return [
+            "id" => $this-> getId(),
+            'title' => $this->getTitle(),
+            'author' => $this->getAuthor(),
+            'publication_year' => $this->getPublicationYear(),
+            'availability' => $this->getAvailability(),
+        ];
     }
 
 }

@@ -19,4 +19,6 @@ $conn = [
 
 // Создание EntityManager
 $entityManager = EntityManager::create($conn, $config);
+
+return $entityManager;
 ?>
